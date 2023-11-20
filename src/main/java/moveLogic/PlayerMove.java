@@ -5,9 +5,8 @@ import java.util.Scanner;
 
 public class PlayerMove {
 
-    public void doPlayerMove(char[] box) {
+    public void doPlayerMove(char[] box, Scanner scan) {
         while (true) {
-            Scanner scan = new Scanner(System.in);
             int input = scan.nextByte();
             if (input > 0 && input < 10) {
                 if (box[input - 1] == 'X' || box[input - 1] == 'O')
