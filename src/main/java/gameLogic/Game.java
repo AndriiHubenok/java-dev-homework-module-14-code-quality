@@ -8,10 +8,10 @@ import java.util.Scanner;
 public class Game {
     private byte winner;
     private static final char[] BOX = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    private static final BoardBuilder boardBuilder = new BoardBuilder();
+    private static final GameOutput gameOutput = new GameOutput();
 
     public void startGame() {
-        BoardBuilder boardBuilder = new BoardBuilder();
-        GameOutput gameOutput = new GameOutput();
         Scanner scan = new Scanner(System.in);
         boolean boxAvailable = false;
         winner = 0;
@@ -26,7 +26,6 @@ public class Game {
             }
 
             if (isGameOver()) {
-                scan.close();
                 break;
             }
 
@@ -57,12 +56,11 @@ public class Game {
 
             checkResultOfGame('O');
         }
-
+        scan.close();
     }
 
     public boolean isGameOver() {
         if (winner > 0 && winner < 4) {
-            GameOutput gameOutput = new GameOutput();
             gameOutput.outputGameOver(winner);
             return true;
         }
